@@ -24,6 +24,7 @@ if [ $RELEASE_NUMBER == "x.y.z" ]; then
     echo "This script is directly downloaded from the github source code."
     echo "Please download the aznfs_install.sh from https://github.com/Azure/BlobNFS-mount/releases/latest"
     echo "If the problem persists, contact Microsoft support."
+    exit 1
 fi
 
 # Detect OS and Version
@@ -105,7 +106,7 @@ else
 fi
 
 install_exit_code=$?
-if [ install_exit_code -ne 0 ]; then
+if [ $install_exit_code -ne 0 ]; then
     echo "[FATAL] Error installing aznfs (exit code: $install_exit_code). See '$install_cmd' command logs for more information."
 fi
 
